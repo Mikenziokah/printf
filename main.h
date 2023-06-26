@@ -6,5 +6,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 int _printf(cons char *format, ...);
+char (*get_function(char i))(va_list);
 
 #endif
