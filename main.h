@@ -5,7 +5,19 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 int _printf(cons char *format, ...);
 char (*get_function(char i))(va_list);
+
+/**
+ * struct type - structure name
+ * @id: format specifier
+ * @func: ptr to function
+ */
+typedef struct type
+{
+	char id;
+	char* (func)(va_list);
+} print;
 
 #endif
