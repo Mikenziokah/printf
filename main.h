@@ -9,6 +9,10 @@
 int _printf(cons char *format, ...);
 char (*get_function(char i))(va_list);
 
+
+char *print_c(va_list list);
+char *print_s(va_list list);
+
 /**
  * struct type - structure name
  * @id: format specifier
