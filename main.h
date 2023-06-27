@@ -6,12 +6,21 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int _printf(cons char *format, ...);
-char (*get_function(char i))(va_list);
+typedef char *(*PrintFunction)(va_list list);
 
-
+int _printf(const char *format, ...);
+char* (*get_func(char i))(va_list);
+char *create_buffer(void);
+void write_buffer(char *buffer, int len, va_list list);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
 char *print_c(va_list list);
 char *print_s(va_list list);
+char *print_d(va_list list);
+char *itob(va_list list);
+char *rot13(va_list list);
+char *rev_string(va_list list);
+char *itoOctal(va_list list);
 
 /**
  * struct type - structure name
@@ -21,7 +30,7 @@ char *print_s(va_list list);
 typedef struct type
 {
 	char id;
-	char* (func)(va_list);
+	PrintFunction func;
 } print;
 
 #endif

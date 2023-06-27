@@ -1,29 +1,31 @@
-#include <stddef.h>
 #include "main.h"
+
 /**
- * get_function - compares format specifier and gets function
- * @i: format specifier
- * Return: returns the right function
+ * get_func - returns needed function
+ * @i: identifier for function
+ * Return: Pointer to needed function
  */
-char (*get_function(char i))(va_list)
+char* (*get_func(char i))(va_list)
 {
-        int n;
+	int k = 0;
 
-        print keys[] = {
-                {'c', print_c},
-                {'s', print_s},
-                {"\0", NULL}
-        };
+	print keys[] = {
+		{'c', print_c},
+		{'s', print_s},
+		{'d', print_d},
+		{'i', print_d},
+		{'b', itob},
+		{'R', rot13},
+		{'r', rev_string},
+		{'o', itoOctal},
+		{'\0', NULL}
+	};
 
-        n = 0;
-
-        while (keys[n].id != "\0")
-        {
-                if (keys[n].id == i)
-                {
-                        return (keys[n].func(valist));
-                }
-                n++
-        }
-        return (NULL);
+	while (keys[k].id != '\0')
+	{
+		if (keys[k].id == i)
+			return (keys[k].func);
+		k++;
+	}
+	return (NULL);
 }
